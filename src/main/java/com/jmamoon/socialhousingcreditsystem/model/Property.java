@@ -9,7 +9,7 @@ package com.jmamoon.socialhousingcreditsystem.model;
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public abstract class Property {
+public class Property {
 
     protected String location;
     protected double price;
