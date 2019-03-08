@@ -11,7 +11,7 @@ package com.jmamoon.socialhousingcreditsystem.constants;
  */
 public class Constants {
 
-    public static final String rulesPath = "rules/";
+    public static final String RULES_PATH = "rules/";
     public static final int MONTHS = 12;
     public static final int LEGAL_ADULT_AGE = 18;
     public static final int BREAKPOINT_AGE = 30;

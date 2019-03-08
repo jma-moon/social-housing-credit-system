@@ -5,11 +5,6 @@
  */
 package com.jmamoon.socialhousingcreditsystem.config.kmodulebeanfactorypostprocessorconfiguration;
 
-import com.jmamoon.socialhousingcreditsystem.config.kiecontainerconfiguration.KieContainerConfiguration;
-import com.jmamoon.socialhousingcreditsystem.config.kiecontainerconfiguration.KieContainerConfigurationFactory;
-import java.io.IOException;
-import org.kie.api.KieBase;
-import org.kie.api.runtime.KieSession;
 import org.kie.spring.KModuleBeanFactoryPostProcessor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

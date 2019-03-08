@@ -6,9 +6,9 @@
 package com.jmamoon.socialhousingcreditsystem.config.kiesessionconfiguration;
 
 import com.jmamoon.socialhousingcreditsystem.config.kiecontainerconfiguration.KieContainerConfiguration;
-import com.jmamoon.socialhousingcreditsystem.config.kiecontainerconfiguration.KieContainerConfigurationFactory;
 import java.io.IOException;
 import org.kie.api.runtime.KieSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class KieSessionConfigurationImpl implements KieSessionConfiguration {
 
-    private final KieContainerConfiguration kieContainerConfiguration = KieContainerConfigurationFactory.create();
+    @Autowired
+    private KieContainerConfiguration kieContainerConfiguration;
 
     @Bean
     @ConditionalOnMissingBean(KieSession.class)

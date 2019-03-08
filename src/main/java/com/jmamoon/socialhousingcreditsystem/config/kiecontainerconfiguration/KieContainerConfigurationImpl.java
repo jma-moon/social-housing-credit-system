@@ -6,12 +6,12 @@
 package com.jmamoon.socialhousingcreditsystem.config.kiecontainerconfiguration;
 
 import com.jmamoon.socialhousingcreditsystem.config.kiefilesystemconfiguration.KieFileSystemConfiguration;
-import com.jmamoon.socialhousingcreditsystem.config.kiefilesystemconfiguration.KieFileSystemConfigurationFactory;
 import com.jmamoon.socialhousingcreditsystem.config.KieServiceFactory.KieServicesFactory;
 import java.io.IOException;
 import org.kie.api.builder.KieBuilder;
 import org.kie.api.builder.KieRepository;
 import org.kie.api.runtime.KieContainer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class KieContainerConfigurationImpl implements KieContainerConfiguration {
 
-    private final KieFileSystemConfiguration kfsc = KieFileSystemConfigurationFactory.create();
+    @Autowired
+    private KieFileSystemConfiguration kfsc;
 
     @Bean
     @ConditionalOnMissingBean(KieContainer.class)
