@@ -1,0 +1,50 @@
+package com.jmamoon;
+
+import com.jmamoon.socialhousingcreditsystem.model.*;
+import com.jmamoon.socialhousingcreditsystem.constants.Constants;
+
+rule "person whose age is less than legal adult age"
+    salience 200
+    when
+        creaditRequest : CreditRequest();
+        person : Person ( age < Constants.LEGAL_ADULT_AGE ) from creaditRequest.getPerson();
+    then
+        creaditRequest.addIssue("Person is too young");
+end
+
+rule "person whose age is more than maximum age"
+    salience 200
+    when
+        creaditRequest : CreditRequest();
+        person : Person ( age > Constants.MAX_AGE ) from creaditRequest.getPerson();
+    then
+        creaditRequest.addIssue("Person is too old");
+end
+
+rule "person whose age is less or equal than breakpoint age"
+    salience 100
+    when
+        creaditRequest : CreditRequest();
+
+        person : Person ( age <= Constants.BREAKPOINT_AGE ) from creaditRequest.getPerson();
+        personAffordablePayment : Double () from person.getAffordablePaymentPerMonth();
+
+        property : Property (price > personAffordablePayment * Constants.MONTHS * Constants.YEARS_TO_PAY_YOUNG_PERSON ) from creaditRequest.getProperty();
+
+    then
+        creaditRequest.addIssue("Property is too expensive");
+end
+
+rule "person whose age is more than breakpoint age"
+    salience 100
+    when
+        creaditRequest : CreditRequest();
+
+        person : Person ( age > Constants.BREAKPOINT_AGE ) from creaditRequest.getPerson();
+        personAffordablePayment : Double () from person.getAffordablePaymentPerMonth();
+
+        property : Property (price > personAffordablePayment * Constants.MONTHS * Constants.YEARS_TO_PAY_OLD_PERSON ) from creaditRequest.getProperty();
+
+    then
+        creaditRequest.addIssue("Property is too expensive");
+end
