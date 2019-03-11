@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.repository.creditrequestprocessor;
+package com.jmamoon.socialhousingcreditsystem.service.creditrequestservice;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
 
@@ -11,8 +11,10 @@ import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public interface CreditRequestProcessor {
+public interface CreditRequestService {
 
-    public CreditRequest processCreditRequest(CreditRequest creditRequest);
+    public CreditRequest findById(Long id);
+
+    public CreditRequest save(CreditRequest creditRequest);
 
 }

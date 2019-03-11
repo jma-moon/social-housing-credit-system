@@ -5,7 +5,7 @@
  */
 package com.jmamoon.socialhousingcreditsystem.repository.creditrequestprocessor;
 
-import com.jmamoon.socialhousingcreditsystem.model.CreditRequest;
+import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;

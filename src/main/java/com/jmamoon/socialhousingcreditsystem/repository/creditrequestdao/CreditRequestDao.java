@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.repository.creditrequestprocessor;
+package com.jmamoon.socialhousingcreditsystem.repository.creditrequestdao;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public interface CreditRequestProcessor {
-
-    public CreditRequest processCreditRequest(CreditRequest creditRequest);
+public interface CreditRequestDao extends JpaRepository<CreditRequest, Long> {
 
 }

@@ -5,7 +5,7 @@
  */
 package com.jmamoon.socialhousingcreditsystem.service.creditrequestprocessor;
 
-import com.jmamoon.socialhousingcreditsystem.model.CreditRequest;
+import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
 
 /**
  *

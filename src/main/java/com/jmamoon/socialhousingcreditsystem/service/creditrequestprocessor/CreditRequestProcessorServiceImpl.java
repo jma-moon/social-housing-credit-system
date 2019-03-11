@@ -5,7 +5,7 @@
  */
 package com.jmamoon.socialhousingcreditsystem.service.creditrequestprocessor;
 
-import com.jmamoon.socialhousingcreditsystem.model.CreditRequest;
+import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
 import com.jmamoon.socialhousingcreditsystem.repository.creditrequestprocessor.CreditRequestProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
