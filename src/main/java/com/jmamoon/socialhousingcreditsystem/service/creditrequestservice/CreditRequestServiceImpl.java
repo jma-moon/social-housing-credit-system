@@ -7,9 +7,10 @@ package com.jmamoon.socialhousingcreditsystem.service.creditrequestservice;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
 import com.jmamoon.socialhousingcreditsystem.repository.creditrequestdao.CreditRequestDao;
-import com.jmamoon.socialhousingcreditsystem.repository.persondao.PersonDao;
-import com.jmamoon.socialhousingcreditsystem.repository.propertydao.PropertyDao;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,23 +24,36 @@ public class CreditRequestServiceImpl implements CreditRequestService {
     private CreditRequestDao creditRequestDao;
 
     @Autowired
-    private PersonDao personDao;
-    
-    @Autowired
-    private PropertyDao propertyDao;
-    
+    private MessageSource messageSource;
+
     @Override
     public CreditRequest findById(Long id) {
-        return creditRequestDao.findById(id).orElse(null);
+        CreditRequest creditRequest = creditRequestDao.findById(id).orElse(null);
+        
+        if (creditRequest != null) {
+            mapIssueCodes(creditRequest);
+        }
+        
+        return creditRequest;
     }
 
     @Override
     public CreditRequest save(CreditRequest creditRequest) {
-        
-        // creditRequest.setPerson(personDao.save(creditRequest.getPerson()));
-        // creditRequest.setProperty(propertyDao.save(creditRequest.getProperty()));
-        
-        return creditRequestDao.save(creditRequest);
+
+
+        CreditRequest savedCreditRequest = creditRequestDao.save(creditRequest);
+        mapIssueCodes(savedCreditRequest);
+
+        return savedCreditRequest;
+    }
+
+    private void mapIssueCodes(CreditRequest creditRequest) {
+        creditRequest.getIssues().stream()
+                .map((issue) -> {
+                    issue.setCode(messageSource.getMessage(issue.getCode(), null, LocaleContextHolder.getLocale()));
+                    return issue;
+                })
+                .collect(Collectors.toList());
     }
 
 }

@@ -19,7 +19,7 @@ public class Constants {
     public static final int YEARS_TO_PAY_YOUNG_PERSON = 30;
     public static final int YEARS_TO_PAY_OLD_PERSON = 25;
 
-    public static final String PERSON_YOUNG = "person.young";
-    public static final String PERSON_OLD = "person.old";
-    public static final String PROPERTY_EXPENSIVE = "property.expensive";
+    public static final String PERSON_YOUNG = "lang.person.young";
+    public static final String PERSON_OLD = "lang.person.old";
+    public static final String PROPERTY_EXPENSIVE = "lang.property.expensive";
 }
