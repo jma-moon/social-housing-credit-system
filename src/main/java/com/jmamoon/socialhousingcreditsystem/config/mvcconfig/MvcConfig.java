@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.localeconfiguration;
+package com.jmamoon.socialhousingcreditsystem.config.mvcconfig;
 
 import java.util.Locale;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +29,8 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("http://localhost:4200");
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:4200")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
     }
 }

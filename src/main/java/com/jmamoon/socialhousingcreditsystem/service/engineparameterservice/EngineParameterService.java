@@ -16,6 +16,6 @@ public interface EngineParameterService {
 
     public List<EngineParameter> findAll();
 
-    public EngineParameter update(EngineParameter engineParameter);
+    public EngineParameter update(Long id, EngineParameter engineParameter);
 
 }
