@@ -1,13 +1,19 @@
 package com.jmamoon;
 
 import com.jmamoon.socialhousingcreditsystem.entity.*;
+import com.jmamoon.socialhousingcreditsystem.model.*;
 import com.jmamoon.socialhousingcreditsystem.constants.Constants;
 
 rule "person whose age is less than legal adult age"
     salience 200
     when
         creditRequest : CreditRequest();
-        person : Person ( age < Constants.LEGAL_ADULT_AGE ) from creditRequest.getPerson();
+        engineParameters: EngineParameters();
+
+        personAgeMin: Double () from engineParameters.getParameter(Constants.PERSON_AGE_MIN);
+
+        person : Person ( age < personAgeMin ) from creditRequest.getPerson();
+
     then
         creditRequest.addIssue(Constants.PERSON_YOUNG);
 end
@@ -16,7 +22,12 @@ rule "person whose age is more than maximum age"
     salience 200
     when
         creditRequest : CreditRequest();
-        person : Person ( age > Constants.MAX_AGE ) from creditRequest.getPerson();
+        engineParameters: EngineParameters();
+
+        personAgeMax: Double () from engineParameters.getParameter(Constants.PERSON_AGE_MAX);
+
+        person : Person ( age > personAgeMax ) from creditRequest.getPerson();
+
     then
         creditRequest.addIssue(Constants.PERSON_OLD);
 end
@@ -25,25 +36,33 @@ rule "person whose age is less or equal than breakpoint age"
     salience 100
     when
         creditRequest : CreditRequest();
+        engineParameters: EngineParameters();
 
-        person : Person ( age <= Constants.BREAKPOINT_AGE ) from creditRequest.getPerson();
+        personAgeBreakpoint: Double () from engineParameters.getParameter(Constants.PERSON_AGE_BREAKPOINT);
+        propertyTimeToPayBreakpointBefore: Double () from engineParameters.getParameter(Constants.PROPERTY_TIME_TO_PAY_BREAKPOINT_BEFORE);
+
+        person : Person ( age <= personAgeBreakpoint ) from creditRequest.getPerson();
         personAffordablePayment : Double () from person.getAmountPerMonth();
 
-        property : Property (price > personAffordablePayment * Constants.MONTHS * Constants.YEARS_TO_PAY_YOUNG_PERSON ) from creditRequest.getProperty();
+        property : Property (price > personAffordablePayment * Constants.MONTHS * propertyTimeToPayBreakpointBefore ) from creditRequest.getProperty();
 
     then
-        creditRequest.addIssue("Property is too expensive");
+        creditRequest.addIssue(Constants.PROPERTY_EXPENSIVE);
 end
 
 rule "person whose age is more than breakpoint age"
     salience 100
     when
         creditRequest : CreditRequest();
+        engineParameters: EngineParameters();
 
-        person : Person ( age > Constants.BREAKPOINT_AGE ) from creditRequest.getPerson();
+        personAgeBreakpoint: Double () from engineParameters.getParameter(Constants.PERSON_AGE_BREAKPOINT);
+        propertyTimeToPayBreakpointAfter: Double () from engineParameters.getParameter(Constants.PROPERTY_TIME_TO_PAY_BREAKPOINT_AFTER);
+
+        person : Person ( age > personAgeBreakpoint ) from creditRequest.getPerson();
         personAffordablePayment : Double () from person.getAmountPerMonth();
 
-        property : Property (price > personAffordablePayment * Constants.MONTHS * Constants.YEARS_TO_PAY_OLD_PERSON ) from creditRequest.getProperty();
+        property : Property (price > personAffordablePayment * Constants.MONTHS * propertyTimeToPayBreakpointAfter ) from creditRequest.getProperty();
 
     then
         creditRequest.addIssue(Constants.PROPERTY_EXPENSIVE);

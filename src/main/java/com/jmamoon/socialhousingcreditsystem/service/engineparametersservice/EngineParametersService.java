@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.model;
+package com.jmamoon.socialhousingcreditsystem.service.engineparametersservice;
+
+import com.jmamoon.socialhousingcreditsystem.model.EngineParameters;
 
 /**
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public class PieceOfLand extends Property {
-
-    @Override
-    public String toString() {
-        return this.location + " piece of land";
-    }
-
+public interface EngineParametersService {
+    
+    public EngineParameters getEngineParameters();
+    
 }

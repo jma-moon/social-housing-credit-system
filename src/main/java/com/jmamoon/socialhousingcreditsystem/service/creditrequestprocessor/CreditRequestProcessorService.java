@@ -6,6 +6,7 @@
 package com.jmamoon.socialhousingcreditsystem.service.creditrequestprocessor;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
+import com.jmamoon.socialhousingcreditsystem.model.EngineParameters;
 
 /**
  *
@@ -13,6 +14,6 @@ import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
  */
 public interface CreditRequestProcessorService {
 
-    public CreditRequest processCreditRequest(CreditRequest creditRequest);
+    public CreditRequest processCreditRequest(CreditRequest creditRequest, EngineParameters engineParameters);
 
 }

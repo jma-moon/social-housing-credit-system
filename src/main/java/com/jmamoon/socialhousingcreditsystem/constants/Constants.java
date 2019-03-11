@@ -13,11 +13,12 @@ public class Constants {
 
     public static final String RULES_PATH = "rules/";
     public static final int MONTHS = 12;
-    public static final int LEGAL_ADULT_AGE = 18;
-    public static final int BREAKPOINT_AGE = 30;
-    public static final int MAX_AGE = 60;
-    public static final int YEARS_TO_PAY_YOUNG_PERSON = 30;
-    public static final int YEARS_TO_PAY_OLD_PERSON = 25;
+
+    public static final String PERSON_AGE_MIN = "engine.person.age.min";
+    public static final String PERSON_AGE_BREAKPOINT = "engine.person.age.breakpoint";
+    public static final String PERSON_AGE_MAX = "engine.person.age.max";
+    public static final String PROPERTY_TIME_TO_PAY_BREAKPOINT_BEFORE = "engine.property.timetopay.breakpoint.before";
+    public static final String PROPERTY_TIME_TO_PAY_BREAKPOINT_AFTER = "engine.property.timetopay.breakpoint.after";
 
     public static final String PERSON_YOUNG = "lang.person.young";
     public static final String PERSON_OLD = "lang.person.old";

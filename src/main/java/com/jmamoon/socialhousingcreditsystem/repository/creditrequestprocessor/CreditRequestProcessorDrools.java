@@ -6,6 +6,7 @@
 package com.jmamoon.socialhousingcreditsystem.repository.creditrequestprocessor;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
+import com.jmamoon.socialhousingcreditsystem.model.EngineParameters;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,12 @@ public class CreditRequestProcessorDrools implements CreditRequestProcessor {
     private KieContainer kieContainer;
 
     @Override
-    public CreditRequest processCreditRequest(CreditRequest creditRequest) {
+    public CreditRequest processCreditRequest(CreditRequest creditRequest, EngineParameters engineParameters) {
 
         KieSession kieSession = kieContainer.newKieSession();
 
         kieSession.insert(creditRequest);
+        kieSession.insert(engineParameters);
         kieSession.fireAllRules();
         kieSession.destroy();
 
