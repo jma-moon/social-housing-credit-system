@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("/credit-request")
 public class CreditRequestController {
