@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.KieServiceFactory;
+package com.jmamoon.socialhousingcreditsystem.service.auth;
 
-import org.kie.api.KieServices;
+import com.jmamoon.socialhousingcreditsystem.entity.Person;
 
 /**
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public class KieServicesFactory {
+public interface AuthService {
 
-    public static KieServices create() {
-        return KieServices.Factory.get();
-    }
+    public Person signIn(String personalId, String password);
 
 }

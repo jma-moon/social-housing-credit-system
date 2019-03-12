@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.kiefilesystemconfiguration;
+package com.jmamoon.socialhousingcreditsystem.config.drools.kiefilesystemconfiguration;
 
-import com.jmamoon.socialhousingcreditsystem.config.KieServiceFactory.KieServicesFactory;
-import com.jmamoon.socialhousingcreditsystem.config.rulesresolver.RulesResolver;
+import com.jmamoon.socialhousingcreditsystem.config.drools.KieServiceFactory.KieServicesFactory;
+import com.jmamoon.socialhousingcreditsystem.config.drools.rulesresolver.RulesResolver;
 import com.jmamoon.socialhousingcreditsystem.constants.Constants;
 import java.io.IOException;
 import java.util.List;

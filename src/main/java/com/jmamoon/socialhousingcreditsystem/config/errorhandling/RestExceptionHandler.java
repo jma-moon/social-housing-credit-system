@@ -5,6 +5,7 @@
  */
 package com.jmamoon.socialhousingcreditsystem.config.errorhandling;
 
+import com.jmamoon.socialhousingcreditsystem.config.errorhandling.exceptions.NotFoundException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -23,14 +25,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-   @Override
-   protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-       String error = "Malformed JSON request";
-       return buildResponseEntity(error, HttpStatus.BAD_REQUEST);
-   }
+    @Override
+    protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        String error = "Malformed JSON request";
+        return buildResponseEntity(error, HttpStatus.BAD_REQUEST);
+    }
 
-   private ResponseEntity<Object> buildResponseEntity(String error, HttpStatus httpStatus) {
-       return new ResponseEntity<>(error, httpStatus);
-   }
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<Object> processNotFoundException(NotFoundException ex) {
+        String error = "Entity not found";
+        return buildResponseEntity(error, HttpStatus.NOT_FOUND);
+    }
+
+    private ResponseEntity<Object> buildResponseEntity(String error, HttpStatus httpStatus) {
+        return new ResponseEntity<>(error, httpStatus);
+    }
 
 }

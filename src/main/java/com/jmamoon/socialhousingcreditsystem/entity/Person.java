@@ -6,7 +6,10 @@
 package com.jmamoon.socialhousingcreditsystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +32,13 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "personal_id")
+    private String personalId;
+
+    @Column(name = "passwd")
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private String password;
+
     @Column(name = "full_name")
     private String fullName;
 
@@ -42,12 +52,32 @@ public class Person implements Serializable {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<CreditRequest> creditRequests;
 
+    public Person() {
+        this.creditRequests = new ArrayList<>();
+    }
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPersonalId() {
+        return personalId;
+    }
+
+    public void setPersonalId(String personalId) {
+        this.personalId = personalId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFullName() {

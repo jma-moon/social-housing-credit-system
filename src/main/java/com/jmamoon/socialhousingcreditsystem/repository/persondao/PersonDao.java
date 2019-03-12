@@ -6,6 +6,7 @@
 package com.jmamoon.socialhousingcreditsystem.repository.persondao;
 
 import com.jmamoon.socialhousingcreditsystem.entity.Person;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
 public interface PersonDao extends JpaRepository<Person, Long> {
+
+    public Optional<Person> findByPersonalIdAndPassword(String personalId, String password);
 
 }

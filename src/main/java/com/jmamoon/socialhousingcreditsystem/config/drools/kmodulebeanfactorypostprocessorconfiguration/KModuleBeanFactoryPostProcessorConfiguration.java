@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.kmodulebeanfactorypostprocessorconfiguration;
+package com.jmamoon.socialhousingcreditsystem.config.drools.kmodulebeanfactorypostprocessorconfiguration;
 
 import org.kie.spring.KModuleBeanFactoryPostProcessor;
 

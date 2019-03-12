@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.kiebaseconfiguration;
+package com.jmamoon.socialhousingcreditsystem.config.drools.kiebaseconfiguration;
 
-import com.jmamoon.socialhousingcreditsystem.config.kiecontainerconfiguration.KieContainerConfiguration;
+import com.jmamoon.socialhousingcreditsystem.config.drools.kiecontainerconfiguration.KieContainerConfiguration;
 import java.io.IOException;
 import org.kie.api.KieBase;
 import org.springframework.beans.factory.annotation.Autowired;

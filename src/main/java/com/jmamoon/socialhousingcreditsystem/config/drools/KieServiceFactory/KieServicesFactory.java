@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.rulesresolver;
+package com.jmamoon.socialhousingcreditsystem.config.drools.KieServiceFactory;
 
-import java.io.IOException;
-import java.util.List;
-import org.springframework.core.io.Resource;
+import org.kie.api.KieServices;
 
 /**
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public interface RulesResolver {
+public class KieServicesFactory {
 
-    public List<Resource> getRuleFiles()throws IOException;
+    public static KieServices create() {
+        return KieServices.Factory.get();
+    }
 
 }

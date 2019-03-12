@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.kiefilesystemconfiguration;
+package com.jmamoon.socialhousingcreditsystem.config.drools.kiefilesystemconfiguration;
 
 import java.io.IOException;
 import org.kie.api.builder.KieFileSystem;

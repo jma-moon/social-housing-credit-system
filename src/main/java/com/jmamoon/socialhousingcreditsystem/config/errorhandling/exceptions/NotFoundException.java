@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.kiesessionconfiguration;
-
-import java.io.IOException;
-import org.kie.api.runtime.KieSession;
+package com.jmamoon.socialhousingcreditsystem.config.errorhandling.exceptions;
 
 /**
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public interface KieSessionConfiguration {
-
-    public KieSession kieSession() throws IOException;
-
+public class NotFoundException extends Exception {
+    
 }

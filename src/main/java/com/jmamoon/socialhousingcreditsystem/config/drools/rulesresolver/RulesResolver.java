@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.kiecontainerconfiguration;
+package com.jmamoon.socialhousingcreditsystem.config.drools.rulesresolver;
 
 import java.io.IOException;
-import org.kie.api.runtime.KieContainer;
+import java.util.List;
+import org.springframework.core.io.Resource;
 
 /**
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public interface KieContainerConfiguration {
+public interface RulesResolver {
 
-    public KieContainer kieContainer() throws IOException;
+    public List<Resource> getRuleFiles()throws IOException;
 
 }

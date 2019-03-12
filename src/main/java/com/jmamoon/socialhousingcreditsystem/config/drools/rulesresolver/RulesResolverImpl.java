@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jmamoon.socialhousingcreditsystem.config.rulesresolver;
+package com.jmamoon.socialhousingcreditsystem.config.drools.rulesresolver;
 
 import com.jmamoon.socialhousingcreditsystem.constants.Constants;
 import java.io.IOException;
