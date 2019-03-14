@@ -6,6 +6,7 @@
 package com.jmamoon.socialhousingcreditsystem.config.errorhandling;
 
 import com.jmamoon.socialhousingcreditsystem.config.errorhandling.exceptions.NotFoundException;
+import javax.validation.ConstraintViolationException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -35,6 +36,12 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> processNotFoundException(NotFoundException ex) {
         String error = "Entity not found";
         return buildResponseEntity(error, HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<Object> processConstraintViolationException(ConstraintViolationException ex) {
+        String error = "Invalid data";
+        return buildResponseEntity(error, HttpStatus.BAD_REQUEST);
     }
 
     private ResponseEntity<Object> buildResponseEntity(String error, HttpStatus httpStatus) {

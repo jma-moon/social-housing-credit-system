@@ -6,12 +6,15 @@
 package com.jmamoon.socialhousingcreditsystem.service.creditrequestservice;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
+import java.util.List;
 
 /**
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
 public interface CreditRequestService {
+
+    public List<CreditRequest> findAll();
 
     public CreditRequest findById(Long id);
 

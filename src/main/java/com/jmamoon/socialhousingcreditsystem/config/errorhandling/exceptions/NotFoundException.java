@@ -9,6 +9,6 @@ package com.jmamoon.socialhousingcreditsystem.config.errorhandling.exceptions;
  *
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
-public class NotFoundException extends Exception {
+public class NotFoundException extends RuntimeException {
     
 }

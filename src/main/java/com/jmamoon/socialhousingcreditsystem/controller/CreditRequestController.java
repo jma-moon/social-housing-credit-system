@@ -10,8 +10,10 @@ import com.jmamoon.socialhousingcreditsystem.model.EngineParameters;
 import com.jmamoon.socialhousingcreditsystem.repository.creditrequestprocessor.CreditRequestProcessor;
 import com.jmamoon.socialhousingcreditsystem.service.creditrequestservice.CreditRequestService;
 import com.jmamoon.socialhousingcreditsystem.service.engineparametersservice.EngineParametersService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,11 @@ public class CreditRequestController {
 
     @Autowired
     private EngineParametersService engineParametersService;
+    
+    @GetMapping
+    public List<CreditRequest> index() {
+        return this.creditRequestService.findAll();
+    }
 
     @PostMapping
     public CreditRequest save(@RequestBody CreditRequest creditrequest) {

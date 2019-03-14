@@ -7,6 +7,7 @@ package com.jmamoon.socialhousingcreditsystem.service.creditrequestservice;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
 import com.jmamoon.socialhousingcreditsystem.repository.creditrequestdao.CreditRequestDao;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -25,6 +26,11 @@ public class CreditRequestServiceImpl implements CreditRequestService {
 
     @Autowired
     private MessageSource messageSource;
+
+    @Override
+    public List<CreditRequest> findAll() {
+        return creditRequestDao.findAll();
+    }
 
     @Override
     public CreditRequest findById(Long id) {

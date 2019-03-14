@@ -6,6 +6,7 @@
 package com.jmamoon.socialhousingcreditsystem.repository.creditrequestdao;
 
 import com.jmamoon.socialhousingcreditsystem.entity.CreditRequest;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Jose Arandia Luna https://github.com/jma-moon
  */
 public interface CreditRequestDao extends JpaRepository<CreditRequest, Long> {
+
+    public List<CreditRequest> findAllByPerson_Id(Long id);
 
 }

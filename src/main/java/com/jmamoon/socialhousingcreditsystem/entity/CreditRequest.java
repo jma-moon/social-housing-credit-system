@@ -31,7 +31,7 @@ public class CreditRequest implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "creditRequests"})
     private Person person;
 

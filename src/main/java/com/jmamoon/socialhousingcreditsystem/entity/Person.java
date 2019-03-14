@@ -19,6 +19,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -32,19 +35,28 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 8, max = 32)
     @Column(name = "personal_id")
     private String personalId;
 
+    @NotNull
+    @Size(min = 8, max = 32)
     @Column(name = "passwd")
     @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
 
+    @NotNull
     @Column(name = "full_name")
     private String fullName;
 
+    @NotNull
+    @Min(0)
     @Column(name = "age")
     private Integer age;
 
+    @NotNull
+    @Min(0)
     @Column(name = "amount_per_month")
     private Double amountPerMonth;
 
